@@ -23,6 +23,7 @@
 
 <meta property="description" itemprop="description" content="THere are other, more fun ways of displaying correlations than in tables. Specifically, I had been wondering if I can display them in a network-like fashion. As I realized, there are a number of ways to do that. There aren&#39;t as many options for undirected paths such as correlations as there are for directed paths (when you have parental nodes) but there are still some fun ways!"/>
 
+<link rel="canonical" href="https://spychlau.github.io/Final_project_blog/posts/2020-03-16-correlation-networks/"/>
 
 <!--  https://schema.org/Article -->
 <meta property="article:published" itemprop="datePublished" content="2020-03-16"/>
@@ -33,19 +34,33 @@
 <meta property="og:title" content="Final Project Blog: Correlation networks"/>
 <meta property="og:type" content="article"/>
 <meta property="og:description" content="THere are other, more fun ways of displaying correlations than in tables. Specifically, I had been wondering if I can display them in a network-like fashion. As I realized, there are a number of ways to do that. There aren&#39;t as many options for undirected paths such as correlations as there are for directed paths (when you have parental nodes) but there are still some fun ways!"/>
+<meta property="og:url" content="https://spychlau.github.io/Final_project_blog/posts/2020-03-16-correlation-networks/"/>
+<meta property="og:image" content="https://spychlau.github.io/Final_project_blog/posts/2020-03-16-correlation-networks/correlation-networks_files/figure-html5/unnamed-chunk-1-1.png"/>
+<meta property="og:image:width" content="1920"/>
+<meta property="og:image:height" content="1920"/>
 <meta property="og:locale" content="en_US"/>
 <meta property="og:site_name" content="Final Project Blog"/>
 
 <!--  https://dev.twitter.com/cards/types/summary -->
-<meta property="twitter:card" content="summary"/>
+<meta property="twitter:card" content="summary_large_image"/>
 <meta property="twitter:title" content="Final Project Blog: Correlation networks"/>
 <meta property="twitter:description" content="THere are other, more fun ways of displaying correlations than in tables. Specifically, I had been wondering if I can display them in a network-like fashion. As I realized, there are a number of ways to do that. There aren&#39;t as many options for undirected paths such as correlations as there are for directed paths (when you have parental nodes) but there are still some fun ways!"/>
+<meta property="twitter:url" content="https://spychlau.github.io/Final_project_blog/posts/2020-03-16-correlation-networks/"/>
+<meta property="twitter:image" content="https://spychlau.github.io/Final_project_blog/posts/2020-03-16-correlation-networks/correlation-networks_files/figure-html5/unnamed-chunk-1-1.png"/>
+<meta property="twitter:image:width" content="1920"/>
+<meta property="twitter:image:height" content="1920"/>
 
+<!--  https://scholar.google.com/intl/en/scholar/inclusion.html#indexing -->
+<meta name="citation_title" content="Final Project Blog: Correlation networks"/>
+<meta name="citation_fulltext_html_url" content="https://spychlau.github.io/Final_project_blog/posts/2020-03-16-correlation-networks/"/>
+<meta name="citation_online_date" content="2020/03/16"/>
+<meta name="citation_publication_date" content="2020/03/16"/>
+<meta name="citation_author" content="Sophie Pychlau"/>
 <!--/radix_placeholder_meta_tags-->
   <!--radix_placeholder_rmarkdown_metadata-->
 
 <script type="text/json" id="radix-rmarkdown-metadata">
-{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","author","date","output","editor_options"]}},"value":[{"type":"character","attributes":{},"value":["Correlation networks"]},{"type":"character","attributes":{},"value":["THere are other, more fun ways of displaying correlations than in tables. Specifically, I had been wondering if I can display them in a network-like fashion. As I realized, there are a number of ways to do that. There aren't as many options for undirected paths such as correlations as there are for directed paths (when you have parental nodes) but there are still some fun ways!"]},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","url"]}},"value":[{"type":"character","attributes":{},"value":["Sophie Pychlau"]},{"type":"character","attributes":{},"value":["https://github.com/spychlau"]}]}]},{"type":"character","attributes":{},"value":["03-16-2020"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["self_contained"]}},"value":[{"type":"logical","attributes":{},"value":[false]}]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["chunk_output_type"]}},"value":[{"type":"character","attributes":{},"value":["console"]}]}]}
+{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","author","date","output","editor_options","citation_url","canonical_url"]}},"value":[{"type":"character","attributes":{},"value":["Correlation networks"]},{"type":"character","attributes":{},"value":["THere are other, more fun ways of displaying correlations than in tables. Specifically, I had been wondering if I can display them in a network-like fashion. As I realized, there are a number of ways to do that. There aren't as many options for undirected paths such as correlations as there are for directed paths (when you have parental nodes) but there are still some fun ways!"]},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","url"]}},"value":[{"type":"character","attributes":{},"value":["Sophie Pychlau"]},{"type":"character","attributes":{},"value":["https://github.com/spychlau"]}]}]},{"type":"character","attributes":{},"value":["03-16-2020"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["self_contained"]}},"value":[{"type":"logical","attributes":{},"value":[false]}]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["chunk_output_type"]}},"value":[{"type":"character","attributes":{},"value":["console"]}]},{"type":"character","attributes":{},"value":["https://spychlau.github.io/Final_project_blog/posts/2020-03-16-correlation-networks/"]},{"type":"character","attributes":{},"value":["https://spychlau.github.io/Final_project_blog/posts/2020-03-16-correlation-networks/"]}]}
 </script>
 <!--/radix_placeholder_rmarkdown_metadata-->
   
@@ -1293,18 +1308,9 @@ document.addEventListener('DOMContentLoaded', function() {
 <a href="../../about.html">About</a>
 </div>
 <div class="nav-right">
-<div class="nav-dropdown">
-<button class="nav-dropbtn">
-Visulalizations
- 
-<span class="down-arrow">&#x25BE;</span>
-</button>
-<div class="nav-dropdown-content">
 <a href="../../overview-of-variables.html">Overview of variables</a>
 <a href="../../correlation-matrices.html">Correlation matrices</a>
 <a href="../../correlation-networks.html">Correlation networks</a>
-</div>
-</div>
 <a href="https://github.com/spychlau">
 <i class="fab fa-github"></i>
 </a>
@@ -1448,7 +1454,18 @@ ggraph(graph_cors, layout = &#39;linear&#39;, circular = TRUE) +
 <!--radix_placeholder_site_after_body-->
 <!--/radix_placeholder_site_after_body-->
 <!--radix_placeholder_appendices-->
-<div class="appendix-bottom"></div>
+<div class="appendix-bottom">
+  <h3 id="citation">Citation</h3>
+  <p>For attribution, please cite this work as</p>
+  <pre class="citation-appendix short">Pychlau (2020, March 16). Final Project Blog: Correlation networks. Retrieved from https://spychlau.github.io/Final_project_blog/posts/2020-03-16-correlation-networks/</pre>
+  <p>BibTeX citation</p>
+  <pre class="citation-appendix long">@misc{pychlau2020correlation,
+  author = {Pychlau, Sophie},
+  title = {Final Project Blog: Correlation networks},
+  url = {https://spychlau.github.io/Final_project_blog/posts/2020-03-16-correlation-networks/},
+  year = {2020}
+}</pre>
+</div>
 <!--/radix_placeholder_appendices-->
 <!--radix_placeholder_navigation_after_body-->
 <!--/radix_placeholder_navigation_after_body-->

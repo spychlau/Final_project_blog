@@ -1,5 +1,6 @@
 name: "Final_Project_Blog"
 title: "Final Project Blog"
+base_url: https://spychlau.github.io/Final_project_blog/
 description: |
   Final Project Blog
 output_dir: "docs"

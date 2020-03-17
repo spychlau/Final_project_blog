@@ -1,10 +1,21 @@
 ---
-title: "About this blog"
+title: "About my final project"
 description: |
-  Some additional details about the blog
+  The sweet and sour effects of speaking up morally in the workplace
+author:
+  - name: Sophie Pychlau
+    url: https://github.com/spychlau
+    affiliation: University of Oregon, Lundquist College of Business
+    affiliation_url: https://business.uoregon.edu/faculty/sophie-pychlau
+date: 03-16-2020
+output:
+  distill::distill_article:
+    self_contained: false
 ---
 
-The data used to generate the visualization in this blog was made public in the GitHub repository connected to this blog. However, notice that this is synthetic data.
+The study on which this project is based pushes back against the literature’s consensus about the negative effects of raising moral objections, arguing that supervisors experience positive affect, as well as negative affect, as they reflect upon moral objections from employees. My coauthors, Hudson Sessions and Mike Frankel, and I highlight the role of the self-conscious emotions of pride and guilt for recipients of moral objections, or moral concerns about work practices. We argue that supervisors interpret the expression of moral objections from employees as assessments of their own success at satisfying the multifaceted, and sometimes contradictory, implicit expectations attached to their role as leaders (Epitropaki & Martin, 2004; Offerman, Kennedy, & Wirtz, 1994). By drawing on the theory of self-conscious emotions (Tracy, Robins, & Tangney, 2007; Tracy & Robins, 2004), we argue that such assessments lead to pride and guilt, depending on whether supervisors assess a moral objection as indicating their success or failure at meeting normative expectations. These self-conscious emotions, in turn, influence the employee-supervisor relationship by affecting levels of trust. We find initial support for our model in a pilot study.
+
+This project uses data synthesized from the pilot survey (published in my Github repo) to play with various ways to introduce readers to survey data and the correlations between variables. The target audience is an interested reader with basic knowledge of survey data. All visualizations and tables serve the purpose of familiarizing oneself with the data before hypotheses get tested.
 
 All scales consist of multiple items which were averaged. All items (except vofrequ) were measured on a scale from 1 ("strongly disagree") to 5 ("strongly agree").
 
@@ -12,6 +23,3 @@ I recruited participants via https://www.prolific.co/
 
 Participants were supervisors who were asked to select one of their employees to base the survey on him/her.
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = FALSE)
-```
