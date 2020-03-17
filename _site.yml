@@ -11,12 +11,6 @@ navbar:
     - text: "About"
       href: about.html
   right:
-    - text: "Overview of variables"
-      href: overview-of-variables.html
-    - text: "Correlation matrices"
-      href: correlation-matrices.html
-    - text: "Correlation networks"
-      href: correlation-networks.html
     - icon: fab fa-github
       href: https://github.com/spychlau
 output: distill::distill_article

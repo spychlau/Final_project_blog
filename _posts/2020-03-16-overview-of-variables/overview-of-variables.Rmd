@@ -1,7 +1,7 @@
 ---
 title: "Overview of variables"
 description: |
-  The goal is to generate a table that allows the reader to search for variables by their acronym, get an exlpanation what a variable measures as well as mean and standard deviation. I want to produce a table with more information on each variable so that you can just easily look up a variable. Such a table would be for everyone interested in the data set.
+  The goal is to generate a table that allows the reader to search for variables by their acronym, get an explanation what a variable measures as well as mean and standard deviation. I want to produce a table with more information on each variable so that you can just easily look up a variable. Such a table would be for everyone interested in the data set.
 author:
   - name: Sophie Pychlau
     url: https://github.com/spychlau

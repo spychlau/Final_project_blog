@@ -19,7 +19,7 @@
   {
     "path": "posts/2020-03-16-correlation-networks/",
     "title": "Correlation networks",
-    "description": "THere are other, more fun ways of displaying correlations than in tables. Specifically, I had been wondering if I can display them in a network-like fashion. As I realized, there are a number of ways to do that. There aren't as many options for undirected paths such as correlations as there are for directed paths (when you have parental nodes) but there are still some fun ways!",
+    "description": "There are other, more fun ways of displaying correlations than in tables. Specifically, I had been wondering if I can display them in a network-like fashion. As I realized, there are a number of ways to do that. There aren't as many options for undirected paths such as correlations as there are for directed paths (when you have parental nodes) but there are still some fun ways!",
     "author": [
       {
         "name": "Sophie Pychlau",
@@ -29,14 +29,14 @@
     "date": "2020-03-16",
     "categories": [],
     "preview": "posts/2020-03-16-correlation-networks/correlation-networks_files/figure-html5/unnamed-chunk-1-1.png",
-    "last_modified": "2020-03-17T12:23:59-07:00",
+    "last_modified": "2020-03-17T12:31:52-07:00",
     "preview_width": 1920,
     "preview_height": 1920
   },
   {
     "path": "posts/2020-03-16-overview-of-variables/",
     "title": "Overview of variables",
-    "description": "The goal is to generate a table that allows the reader to search for variables by their acronym, get an exlpanation what a variable measures as well as mean and standard deviation. I want to produce a table with more information on each variable so that you can just easily look up a variable. Such a table would be for everyone interested in the data set.",
+    "description": "The goal is to generate a table that allows the reader to search for variables by their acronym, get an explanation what a variable measures as well as mean and standard deviation. I want to produce a table with more information on each variable so that you can just easily look up a variable. Such a table would be for everyone interested in the data set.",
     "author": [
       {
         "name": "Sophie Pychlau",
@@ -46,6 +46,6 @@
     "date": "2020-03-16",
     "categories": [],
     "preview": {},
-    "last_modified": "2020-03-16T18:40:02-07:00"
+    "last_modified": "2020-03-17T12:32:45-07:00"
   }
 ]
