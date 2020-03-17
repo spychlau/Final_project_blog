@@ -65,7 +65,7 @@
 <!--/radix_placeholder_rmarkdown_metadata-->
   
   <script type="text/json" id="radix-resource-manifest">
-  {"type":"character","attributes":{},"value":["correlation-networks_files/bowser-1.9.3/bowser.min.js","correlation-networks_files/distill-2.2.21/template.v2.js","correlation-networks_files/figure-html5/unnamed-chunk-1-1.png","correlation-networks_files/figure-html5/unnamed-chunk-2-1.png","correlation-networks_files/figure-html5/unnamed-chunk-3-1.png","correlation-networks_files/figure-html5/unnamed-chunk-4-1.png","correlation-networks_files/figure-html5/unnamed-chunk-5-1.png","correlation-networks_files/jquery-1.11.3/jquery.min.js","correlation-networks_files/webcomponents-2.0.0/webcomponents.js","data_syn.csv"]}
+  {"type":"character","attributes":{},"value":["correlation-networks_files/bowser-1.9.3/bowser.min.js","correlation-networks_files/distill-2.2.21/template.v2.js","correlation-networks_files/figure-html5/unnamed-chunk-1-1.png","correlation-networks_files/figure-html5/unnamed-chunk-2-1.png","correlation-networks_files/figure-html5/unnamed-chunk-3-1.png","correlation-networks_files/figure-html5/unnamed-chunk-4-1.png","correlation-networks_files/figure-html5/unnamed-chunk-5-1.png","correlation-networks_files/figure-html5/unnamed-chunk-6-1.png","correlation-networks_files/figure-html5/unnamed-chunk-7-1.png","correlation-networks_files/jquery-1.11.3/jquery.min.js","correlation-networks_files/webcomponents-2.0.0/webcomponents.js","data_syn.csv"]}
   </script>
   <!--radix_placeholder_navigation_in_header-->
 
@@ -1351,7 +1351,11 @@ qgraph::qgraph(cormat,
 </div>
 <p>However, it is not a particularly beautiful plot. Most annoying is that it does not show the full names of the variables but shortens them to fit into the circles. The package does not offer options to address that. It allows you to change font size but that will make some variable names so small that they are not legible anymore. Hence, I looked into a different package, ggraph, that is much more flexible and builds plots in layers like ggplot does.</p>
 <aside>
-Notice that I will limit the following plots to correlations &gt; 0.3 to ease the visual load. Unfortunately, I am not aware of a function in ggraph to only plot significant correlations because, other than ggcorrplot, ggraph is not just built for correlations.
+<p>Notice that I will limit the following plots to correlations &gt; 0.3 to ease the visual load. Unfortunately, I am not aware of a function in ggraph to only plot significant correlations because, other than ggcorrplot, ggraph is not just built for correlations.</p>
+These are the correlations below 0.3, it’s just too many to display them too:
+<div class="layout-chunk" data-layout="l-body-outset">
+<p><img src="correlation-networks_files/figure-html5/unnamed-chunk-2-1.png" width="624" /></p>
+</div>
 </aside>
 <div class="layout-chunk" data-layout="l-body-outset">
 <pre class="r"><code>
@@ -1371,7 +1375,7 @@ ggraph(graph_cors) +
   geom_node_point() +
   geom_node_text(aes(label = name), repel = TRUE) +
   theme_void()</code></pre>
-<p><img src="correlation-networks_files/figure-html5/unnamed-chunk-2-1.png" width="624" /></p>
+<p><img src="correlation-networks_files/figure-html5/unnamed-chunk-3-1.png" width="624" /></p>
 </div>
 <p>This is an exciting first step! First of all, I want to play with the edges, using color and size to convey information about the correlation strength and direction.</p>
 <div class="layout-chunk" data-layout="l-body-outset">
@@ -1392,7 +1396,7 @@ ggraph(graph_cors, layout = &quot;kk&quot;) +
                  nudge_x = 0.05, 
                  nudge_y = -0.2) +
   theme_graph()</code></pre>
-<p><img src="correlation-networks_files/figure-html5/unnamed-chunk-3-1.png" width="960" /></p>
+<p><img src="correlation-networks_files/figure-html5/unnamed-chunk-4-1.png" width="960" /></p>
 </div>
 <p>I like this quite a lot, but I would want to put it into a circular fashion as qgraph did. I think that eases the cognitive load when looking at the graph. As it is now, particularly in the middle where the corrlations are very dense, it is hard to recognize any individual edges.</p>
 <div class="layout-chunk" data-layout="l-body">
@@ -1417,7 +1421,7 @@ ggraph(graph_cors, layout = &#39;linear&#39;, circular = TRUE) +
   theme_graph() +
   labs(title = &quot;Correlations between variables&quot;,
        subtitle = &quot;Plotted only if Pearson&#39;s r &gt; .3&quot;)</code></pre>
-<p><img src="correlation-networks_files/figure-html5/unnamed-chunk-4-1.png" width="816" /></p>
+<p><img src="correlation-networks_files/figure-html5/unnamed-chunk-5-1.png" width="816" /></p>
 </div>
 <p>This is getting better! When I went through the variuous functions ggraph offers, I saw that I can do archs instead of straight lines. I thought that might look nice, so I tried:</p>
 <div class="layout-chunk" data-layout="l-body-outset">
@@ -1441,7 +1445,90 @@ ggraph(graph_cors, layout = &#39;linear&#39;, circular = TRUE) +
   guides(edge_alpha = &quot;none&quot;, 
          edge_width = &quot;none&quot;) +
   coord_fixed() </code></pre>
-<p><img src="correlation-networks_files/figure-html5/unnamed-chunk-5-1.png" width="960" /></p>
+<p><img src="correlation-networks_files/figure-html5/unnamed-chunk-6-1.png" width="960" /></p>
+</div>
+<p>This is great but I wonder if I can again ease ther visual load by tearing the plot apart into several blogs with correlations in different ranges.</p>
+<aside>
+I did not use arch width to signify correlation strength since it I use several ranges now and the individual archs are easier to display if there is less going on.
+</aside>
+<div class="layout-chunk" data-layout="l-screen">
+<pre class="r"><code>
+#First range: r &gt;= 0.3 and &lt; 0.4
+graph_cors2 &lt;- tidy_cors %&gt;% 
+  filter(abs(r) &gt;= 0.3 &amp; abs(r) &lt; 0.4) %&gt;% 
+  igraph::graph_from_data_frame(directed = FALSE)
+
+plot2 &lt;- ggraph(graph_cors2, layout = &#39;linear&#39;, circular = TRUE) + 
+ geom_edge_arc(aes(edge_alpha = abs(r), 
+                   color = r),
+               show.legend = FALSE) + 
+  scale_edge_colour_gradientn(limits = c(-1, 1), 
+                              colors = c(&quot;darkblue&quot;, &quot;firebrick2&quot;)) +
+  geom_node_text(aes(label = name), 
+                 nudge_y = 0.08,
+                 nudge_x = 0.1,
+                 colour = &quot;grey10&quot;, 
+                 size = 1.5) +
+  geom_node_point(color = &quot;grey20&quot;, 
+                  size = 1) +
+  theme_graph(title_size = 5,
+              title_face = &quot;plain&quot;,
+              plot_margin = margin(5, 5, 5, 5)) +
+  labs(title = &quot;Between 0.3 and 0.4&quot;) +
+  coord_fixed() 
+
+#Second range: r &gt;= 0.4 and &lt; 0.5
+graph_cors3 &lt;- tidy_cors %&gt;% 
+  filter(abs(r) &gt;= 0.3 &amp; abs(r) &lt; 0.4) %&gt;% 
+  igraph::graph_from_data_frame(directed = FALSE)
+
+plot3 &lt;- ggraph(graph_cors3, layout = &#39;linear&#39;, circular = TRUE) + 
+ geom_edge_arc(aes(edge_alpha = abs(r), 
+                   color = r),
+               show.legend = FALSE) + 
+  scale_edge_colour_gradientn(limits = c(-1, 1), 
+                              colors = c(&quot;darkblue&quot;, &quot;firebrick2&quot;)) +
+  geom_node_text(aes(label = name), 
+                 nudge_y = 0.08,
+                 nudge_x = 0.1,
+                 colour = &quot;grey10&quot;, 
+                 size = 1.5) +
+  geom_node_point(color = &quot;grey20&quot;, 
+                  size = 1) +
+  theme_graph(title_size = 5,
+              title_face = &quot;plain&quot;,
+              plot_margin = margin(5, 5, 5, 5)) +
+  labs(title = &quot;Between 0.4 and 0.5&quot;) +
+  coord_fixed() 
+
+#Third range: r &gt;= 0.5
+graph_cors4 &lt;- tidy_cors %&gt;% 
+  filter(abs(r) &gt;= 0.5) %&gt;% 
+  igraph::graph_from_data_frame(directed = FALSE)
+
+plot4 &lt;- ggraph(graph_cors4, layout = &#39;linear&#39;, circular = TRUE) + 
+ geom_edge_arc(aes(edge_alpha = abs(r), 
+                   color = r),
+               show.legend = FALSE) + 
+  scale_edge_colour_gradientn(limits = c(-1, 1), 
+                              colors = c(&quot;darkblue&quot;, &quot;firebrick2&quot;)) +
+  geom_node_text(aes(label = name), 
+                 nudge_y = 0.08,
+                 nudge_x = 0.1,
+                 colour = &quot;grey10&quot;, 
+                 size = 1.5) +
+  geom_node_point(color = &quot;grey20&quot;, 
+                  size = 1) +
+  theme_graph(title_size = 5,
+              title_face = &quot;plain&quot;,
+              plot_margin = margin(5, 5, 5, 5)) +
+  labs(title = &quot;At least 0.5&quot;) +
+  coord_fixed() 
+
+library(patchwork)
+plot2 + plot3 + plot4 + plot_annotation(&quot;Pearson&#39;s r in different ranges&quot;,
+                                        theme = theme(plot.title = element_text(size = 8, hjust = 0.5)))</code></pre>
+<p><img src="correlation-networks_files/figure-html5/unnamed-chunk-7-1.png" width="624" /></p>
 </div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->

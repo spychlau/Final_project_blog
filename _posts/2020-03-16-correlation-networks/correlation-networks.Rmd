@@ -53,6 +53,27 @@ However, it is not a particularly beautiful plot. Most annoying is that it does 
 
 <aside>
 Notice that I will limit the following plots to correlations > 0.3 to ease the visual load. Unfortunately, I am not aware of a function in ggraph to only plot significant correlations because, other than ggcorrplot, ggraph is not just built for correlations.
+
+These are the correlations below 0.3, it's just too many to display them too:
+```{r, echo = FALSE}
+
+tidy_cors <- data %>% 
+  correlate() %>% 
+  stretch() %>% 
+  arrange(desc(r))
+
+graph_cors1 <- tidy_cors %>% 
+  filter(abs(r) < 0.3) %>% 
+  igraph::graph_from_data_frame(directed = FALSE)
+
+ggraph(graph_cors1, layout = 'linear', circular = TRUE) + 
+ geom_edge_arc() + 
+  geom_node_point(color = "grey20", 
+                  size = 3) +
+  theme_graph() +
+  coord_fixed() 
+
+```
 </aside>
 
 ```{r}
@@ -150,5 +171,90 @@ ggraph(graph_cors, layout = 'linear', circular = TRUE) +
          edge_width = "none") +
   coord_fixed() 
 
+```
+
+This is great but I wonder if I can again ease ther visual load by tearing the plot apart into several blogs with correlations in different ranges.
+
+<aside>
+I did not use arch width to signify correlation strength since it I use several ranges now and the individual archs are easier to display if there is less going on.
+</aside>
+
+```{r, layout = "l-screen"}
+
+#First range: r >= 0.3 and < 0.4
+graph_cors2 <- tidy_cors %>% 
+  filter(abs(r) >= 0.3 & abs(r) < 0.4) %>% 
+  igraph::graph_from_data_frame(directed = FALSE)
+
+plot2 <- ggraph(graph_cors2, layout = 'linear', circular = TRUE) + 
+ geom_edge_arc(aes(edge_alpha = abs(r), 
+                   color = r),
+               show.legend = FALSE) + 
+  scale_edge_colour_gradientn(limits = c(-1, 1), 
+                              colors = c("darkblue", "firebrick2")) +
+  geom_node_text(aes(label = name), 
+                 nudge_y = 0.08,
+                 nudge_x = 0.1,
+                 colour = "grey10", 
+                 size = 1.5) +
+  geom_node_point(color = "grey20", 
+                  size = 1) +
+  theme_graph(title_size = 5,
+              title_face = "plain",
+              plot_margin = margin(5, 5, 5, 5)) +
+  labs(title = "Between 0.3 and 0.4") +
+  coord_fixed() 
+
+#Second range: r >= 0.4 and < 0.5
+graph_cors3 <- tidy_cors %>% 
+  filter(abs(r) >= 0.3 & abs(r) < 0.4) %>% 
+  igraph::graph_from_data_frame(directed = FALSE)
+
+plot3 <- ggraph(graph_cors3, layout = 'linear', circular = TRUE) + 
+ geom_edge_arc(aes(edge_alpha = abs(r), 
+                   color = r),
+               show.legend = FALSE) + 
+  scale_edge_colour_gradientn(limits = c(-1, 1), 
+                              colors = c("darkblue", "firebrick2")) +
+  geom_node_text(aes(label = name), 
+                 nudge_y = 0.08,
+                 nudge_x = 0.1,
+                 colour = "grey10", 
+                 size = 1.5) +
+  geom_node_point(color = "grey20", 
+                  size = 1) +
+  theme_graph(title_size = 5,
+              title_face = "plain",
+              plot_margin = margin(5, 5, 5, 5)) +
+  labs(title = "Between 0.4 and 0.5") +
+  coord_fixed() 
+
+#Third range: r >= 0.5
+graph_cors4 <- tidy_cors %>% 
+  filter(abs(r) >= 0.5) %>% 
+  igraph::graph_from_data_frame(directed = FALSE)
+
+plot4 <- ggraph(graph_cors4, layout = 'linear', circular = TRUE) + 
+ geom_edge_arc(aes(edge_alpha = abs(r), 
+                   color = r),
+               show.legend = FALSE) + 
+  scale_edge_colour_gradientn(limits = c(-1, 1), 
+                              colors = c("darkblue", "firebrick2")) +
+  geom_node_text(aes(label = name), 
+                 nudge_y = 0.08,
+                 nudge_x = 0.1,
+                 colour = "grey10", 
+                 size = 1.5) +
+  geom_node_point(color = "grey20", 
+                  size = 1) +
+  theme_graph(title_size = 5,
+              title_face = "plain",
+              plot_margin = margin(5, 5, 5, 5)) +
+  labs(title = "At least 0.5") +
+  coord_fixed() 
+
+library(patchwork)
+plot2 + plot3 + plot4 + plot_annotation("Pearson's r in different ranges",
+                                        theme = theme(plot.title = element_text(size = 8, hjust = 0.5)))
 ```
 
