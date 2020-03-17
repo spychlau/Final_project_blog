@@ -1,0 +1,154 @@
+---
+title: "Correlation networks"
+description: |
+  THere are other, more fun ways of displaying correlations than in tables. Specifically, I had been wondering if I can display them in a network-like fashion. As I realized, there are a number of ways to do that. There aren't as many options for undirected paths such as correlations as there are for directed paths (when you have parental nodes) but there are still some fun ways!
+author:
+  - name: Sophie Pychlau
+    url: https://github.com/spychlau
+date: 03-16-2020
+output:
+  distill::distill_article:
+    self_contained: false
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+  echo = TRUE,
+  warning = FALSE,
+  message = FALSE,
+  layout = "l-body-outset",
+  comment = "##",
+  R.options = list(width = 60)
+)
+
+library(corrr)
+library(tidyverse)
+library(tidygraph)
+library(ggraph)
+
+data <- read_csv("data_syn.csv") 
+
+```
+
+First, I looked into the qgraph package which is a really easy way to display correlations as a network if you have a correlation matrix.
+
+```{r, fig.height=10, fig.width=10, layout = "l-body"}
+
+cormat <- round(cor(data), 2)
+
+qgraph::qgraph(cormat, 
+        graph = "pcor", 
+        layout = "circle", 
+        minimum = "sig", 
+        sampleSize = 99, 
+        posCol = c("#ef8a62", "firebrick2"), 
+        negCol = c("#67a9cf", "darkblue"),
+        edge.labels = FALSE) 
+
+```
+
+However, it is not a particularly beautiful plot. Most annoying is that it does not show the full names of the variables but shortens them to fit into the circles. The package does not offer options to address that. It allows you to change font size but that will make some variable names so small that they are not legible anymore. Hence, I looked into a different package, ggraph, that is much more flexible and builds plots in layers like ggplot does.
+
+<aside>
+Notice that I will limit the following plots to correlations > 0.3 to ease the visual load. Unfortunately, I am not aware of a function in ggraph to only plot significant correlations because, other than ggcorrplot, ggraph is not just built for correlations.
+</aside>
+
+```{r}
+
+tidy_cors <- data %>% 
+  correlate() %>% 
+  stretch() %>% 
+  arrange(desc(r))
+#arranging in descending order is an idea I had later, it makes the graph easier to read!
+
+graph_cors <- tidy_cors %>% 
+  filter(abs(r) > 0.3) %>% 
+  igraph::graph_from_data_frame(directed = FALSE)
+
+# Plot
+ggraph(graph_cors) +
+  geom_edge_link() +
+  geom_node_point() +
+  geom_node_text(aes(label = name), repel = TRUE) +
+  theme_void()
+
+```
+
+This is an exciting first step! First of all, I want to play with the edges, using color and size to convey information about the correlation strength and direction.
+
+```{r, fig.height=10, fig.width=10}
+
+ggraph(graph_cors, layout = "kk") +
+  geom_edge_link(aes(edge_alpha = abs(r), 
+                     edge_width = abs(r), 
+                     color = r)) +
+  guides(edge_alpha = "none", 
+         edge_width = "none") +
+  scale_edge_colour_gradientn(limits = c(-1, 1), 
+                              colors = c("darkblue", "firebrick2")) +
+  geom_node_point(color = "white", 
+                  size = 5) +
+  geom_node_text(aes(label = name), 
+                 colour = "grey20", 
+                 size = 5, 
+                 nudge_x = 0.05, 
+                 nudge_y = -0.2) +
+  theme_graph()
+
+```
+
+I like this quite a lot, but I would want to put it into a circular fashion as qgraph did. I think that eases the cognitive load when looking at the graph. As it is now, particularly in the middle where the corrlations are very dense, it is hard to recognize any individual edges.
+
+```{r, fig.height=8.5, fig.width=8.5, layout = "l-body"}
+
+ggraph(graph_cors, layout = 'linear', circular = TRUE) +
+  geom_edge_link(aes(edge_alpha = abs(r), 
+                     edge_width = abs(r), 
+                     color = r)) +
+  guides(edge_alpha = "none", 
+         edge_width = "none") +
+  scale_edge_colour_gradientn(limits = c(-1, 1), 
+                              colors = c("darkblue", "firebrick2")) +
+  geom_node_point(color = "grey30", 
+                  size = 5, 
+                  alpha = 0.8) +
+  geom_node_text(aes(label = name), 
+                 nudge_x = 0.04, 
+                 nudge_y = 0.08, 
+                 size = 5, 
+                 colour = "grey20", 
+                 alpha = 0.85) +
+  theme_graph() +
+  labs(title = "Correlations between variables",
+       subtitle = "Plotted only if Pearson's r > .3")
+
+```
+
+This is getting better! When I went through the variuous functions ggraph offers, I saw that I can do archs instead of straight lines. I thought that might look nice, so I tried:
+
+```{r, fig.height=12, fig.width=10}
+
+ggraph(graph_cors, layout = 'linear', circular = TRUE) + 
+ geom_edge_arc(aes(edge_alpha = abs(r), 
+                   edge_width = abs(r), 
+                   color = r)) + 
+  scale_edge_colour_gradientn(limits = c(-1, 1), 
+                              colors = c("darkblue", "firebrick2")) +
+  geom_node_text(aes(label = name), 
+                 nudge_y = 0.08,
+                 nudge_x = 0.06,
+                 colour = "grey10", 
+                 size = 5) +
+  geom_node_point(color = "grey20", 
+                  size = 5) +
+  theme_graph() +
+  labs(title = "Correlations between variables",
+       subtitle = "Plotted only if Pearson's r > .3") +
+  guides(edge_alpha = "none", 
+         edge_width = "none") +
+  coord_fixed() 
+
+```
+

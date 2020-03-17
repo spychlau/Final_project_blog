@@ -1,0 +1,17 @@
+---
+title: "About this blog"
+description: |
+  Some additional details about the blog
+---
+
+The data used to generate the visualization in this blog was made public in the GitHub repository connected to this blog. However, notice that this is synthetic data.
+
+All scales consist of multiple items which were averaged. All items (except vofrequ) were measured on a scale from 1 ("strongly disagree") to 5 ("strongly agree").
+
+I recruited participants via https://www.prolific.co/
+
+Participants were supervisors who were asked to select one of their employees to base the survey on him/her.
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```

@@ -1,0 +1,2025 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1"/>
+  <meta name="generator" content="distill" />
+
+  <style type="text/css">
+  /* Hide doc at startup (prevent jankiness while JS renders/transforms) */
+  body {
+    visibility: hidden;
+  }
+  </style>
+
+ <!--radix_placeholder_import_source-->
+ <!--/radix_placeholder_import_source-->
+
+  <!--radix_placeholder_meta_tags-->
+  <title>Overview of variables</title>
+  
+  <meta property="description" itemprop="description" content="The goal is to generate a table that allows the reader to search for variables by their acronym, get an exlpanation what a variable measures as well as mean and standard deviation. I want to produce a table with more information on each variable so that you can just easily look up a variable. Such a table would be for everyone interested in the data set."/>
+  
+  
+  <!--  https://schema.org/Article -->
+  <meta property="article:published" itemprop="datePublished" content="2020-03-16"/>
+  <meta property="article:created" itemprop="dateCreated" content="2020-03-16"/>
+  <meta name="article:author" content="Sophie Pychlau"/>
+  
+  <!--  https://developers.facebook.com/docs/sharing/webmasters#markup -->
+  <meta property="og:title" content="Overview of variables"/>
+  <meta property="og:type" content="article"/>
+  <meta property="og:description" content="The goal is to generate a table that allows the reader to search for variables by their acronym, get an exlpanation what a variable measures as well as mean and standard deviation. I want to produce a table with more information on each variable so that you can just easily look up a variable. Such a table would be for everyone interested in the data set."/>
+  <meta property="og:locale" content="en_US"/>
+  
+  <!--  https://dev.twitter.com/cards/types/summary -->
+  <meta property="twitter:card" content="summary"/>
+  <meta property="twitter:title" content="Overview of variables"/>
+  <meta property="twitter:description" content="The goal is to generate a table that allows the reader to search for variables by their acronym, get an exlpanation what a variable measures as well as mean and standard deviation. I want to produce a table with more information on each variable so that you can just easily look up a variable. Such a table would be for everyone interested in the data set."/>
+  
+  <!--/radix_placeholder_meta_tags-->
+  <!--radix_placeholder_rmarkdown_metadata-->
+  
+  <script type="text/json" id="radix-rmarkdown-metadata">
+  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","author","date","output","editor_options"]}},"value":[{"type":"character","attributes":{},"value":["Overview of variables"]},{"type":"character","attributes":{},"value":["The goal is to generate a table that allows the reader to search for variables by their acronym, get an exlpanation what a variable measures as well as mean and standard deviation. I want to produce a table with more information on each variable so that you can just easily look up a variable. Such a table would be for everyone interested in the data set.\n"]},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","url"]}},"value":[{"type":"character","attributes":{},"value":["Sophie Pychlau"]},{"type":"character","attributes":{},"value":["https://github.com/spychlau"]}]}]},{"type":"character","attributes":{},"value":["03-16-2020"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["self_contained"]}},"value":[{"type":"logical","attributes":{},"value":[false]}]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["chunk_output_type"]}},"value":[{"type":"character","attributes":{},"value":["console"]}]}]}
+  </script>
+  <!--/radix_placeholder_rmarkdown_metadata-->
+  
+  <script type="text/json" id="radix-resource-manifest">
+  {"type":"character","attributes":{},"value":["data_syn.csv","overview-of-variables_files/bowser-1.9.3/bowser.min.js","overview-of-variables_files/core-js-2.5.3/LICENSE","overview-of-variables_files/core-js-2.5.3/package.json","overview-of-variables_files/core-js-2.5.3/shim.min.js","overview-of-variables_files/distill-2.2.21/template.v2.js","overview-of-variables_files/figure-html5/unnamed-chunk-2-1.png","overview-of-variables_files/htmlwidgets-1.5.1/htmlwidgets.js","overview-of-variables_files/jquery-1.11.3/jquery.min.js","overview-of-variables_files/react-16.12.0/AUTHORS","overview-of-variables_files/react-16.12.0/LICENSE.txt","overview-of-variables_files/react-16.12.0/react-dom.min.js","overview-of-variables_files/react-16.12.0/react.min.js","overview-of-variables_files/reactable-binding-0.1.0.1/reactable.js","overview-of-variables_files/reactwidget-1.0.0/react-tools.js","overview-of-variables_files/reactwidget-1.0.0/react-tools.js.map","overview-of-variables_files/webcomponents-2.0.0/webcomponents.js","Variables2.csv"]}
+  </script>
+  <!--radix_placeholder_navigation_in_header-->
+  <!--/radix_placeholder_navigation_in_header-->
+  <!--radix_placeholder_distill-->
+  
+  <style type="text/css">
+  
+  body {
+    background-color: white;
+  }
+  
+  .pandoc-table {
+    width: 100%;
+  }
+  
+  .pandoc-table>caption {
+    margin-bottom: 10px;
+  }
+  
+  .pandoc-table th:not([align]) {
+    text-align: left;
+  }
+  
+  .pagedtable-footer {
+    font-size: 15px;
+  }
+  
+  .html-widget {
+    margin-bottom: 2.0em;
+  }
+  
+  .l-screen-inset {
+    padding-right: 16px;
+  }
+  
+  .l-screen .caption {
+    margin-left: 10px;
+  }
+  
+  .shaded {
+    background: rgb(247, 247, 247);
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  }
+  
+  .shaded .html-widget {
+    margin-bottom: 0;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+  }
+  
+  .shaded .shaded-content {
+    background: white;
+  }
+  
+  .text-output {
+    margin-top: 0;
+    line-height: 1.5em;
+  }
+  
+  .hidden {
+    display: none !important;
+  }
+  
+  d-article {
+    padding-bottom: 30px;
+  }
+  
+  d-appendix {
+    padding-top: 30px;
+  }
+  
+  d-article>p>img {
+    width: 100%;
+  }
+  
+  d-article iframe {
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    margin-bottom: 2.0em;
+    width: 100%;
+  }
+  
+  figure img.external {
+    background: white;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0 1px 8px rgba(0, 0, 0, 0.1);
+    padding: 18px;
+    box-sizing: border-box;
+  }
+  
+  /* CSS for table of contents */
+  
+  .d-toc {
+    color: rgba(0,0,0,0.8);
+    font-size: 0.8em;
+    line-height: 1em;
+  }
+  
+  .d-toc-header {
+    font-size: 0.6rem;
+    font-weight: 400;
+    color: rgba(0, 0, 0, 0.5);
+    text-transform: uppercase;
+    margin-top: 0;
+    margin-bottom: 1.3em;
+  }
+  
+  .d-toc a {
+    border-bottom: none;
+  }
+  
+  .d-toc ul {
+    padding-left: 0;
+  }
+  
+  .d-toc li>ul {
+    padding-top: 0.8em;
+    padding-left: 16px;
+    margin-bottom: 0.6em;
+  }
+  
+  .d-toc ul,
+  .d-toc li {
+    list-style-type: none;
+  }
+  
+  .d-toc li {
+    margin-bottom: 0.9em;
+  }
+  
+  .d-toc-separator {
+    margin-top: 20px;
+    margin-bottom: 2em;
+  }
+  
+  .d-article-with-toc {
+    border-top: none;
+    padding-top: 0;
+  }
+  
+  
+  
+  /* Tweak code blocks (note that this CSS is repeated above in an injection
+     into the d-code shadow dom) */
+  
+  d-code {
+    overflow-x: auto !important;
+  }
+  
+  pre.d-code code.d-code {
+    padding-left: 10px;
+    font-size: 12px;
+    border-left: 2px solid rgba(0,0,0,0.1);
+  }
+  
+  pre.text-output {
+  
+    font-size: 12px;
+    color: black;
+    background: none;
+    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+    text-align: left;
+    white-space: pre;
+    word-spacing: normal;
+    word-break: normal;
+    word-wrap: normal;
+    line-height: 1.5;
+  
+    -moz-tab-size: 4;
+    -o-tab-size: 4;
+    tab-size: 4;
+  
+    -webkit-hyphens: none;
+    -moz-hyphens: none;
+    -ms-hyphens: none;
+    hyphens: none;
+  }
+  
+  @media(min-width: 768px) {
+  
+  d-code {
+    overflow-x: visible !important;
+  }
+  
+  pre.d-code code.d-code  {
+      padding-left: 18px;
+      font-size: 14px;
+  }
+  pre.text-output {
+    font-size: 14px;
+  }
+  }
+  
+  /* Figure */
+  
+  .figure {
+    position: relative;
+    margin-bottom: 2.5em;
+    margin-top: 1.5em;
+  }
+  
+  .figure img {
+    width: 100%;
+  }
+  
+  .figure .caption {
+    color: rgba(0, 0, 0, 0.6);
+    font-size: 12px;
+    line-height: 1.5em;
+  }
+  
+  .figure img.external {
+    background: white;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0 1px 8px rgba(0, 0, 0, 0.1);
+    padding: 18px;
+    box-sizing: border-box;
+  }
+  
+  .figure .caption a {
+    color: rgba(0, 0, 0, 0.6);
+  }
+  
+  .figure .caption b,
+  .figure .caption strong, {
+    font-weight: 600;
+    color: rgba(0, 0, 0, 1.0);
+  }
+  
+  
+  
+  /* Tweak 1000px media break to show more text */
+  
+  @media(min-width: 1000px) {
+    .base-grid,
+    distill-header,
+    d-title,
+    d-abstract,
+    d-article,
+    d-appendix,
+    distill-appendix,
+    d-byline,
+    d-footnote-list,
+    d-citation-list,
+    distill-footer {
+      grid-template-columns: [screen-start] 1fr [page-start kicker-start] 80px [middle-start] 50px [text-start kicker-end] 65px 65px 65px 65px 65px 65px 65px 65px [text-end gutter-start] 65px [middle-end] 65px [page-end gutter-end] 1fr [screen-end];
+      grid-column-gap: 16px;
+    }
+  
+    .grid {
+      grid-column-gap: 16px;
+    }
+  
+    d-article {
+      font-size: 1.06rem;
+      line-height: 1.7em;
+    }
+    figure .caption, .figure .caption, figure figcaption {
+      font-size: 13px;
+    }
+  }
+  
+  @media(min-width: 1180px) {
+    .base-grid,
+    distill-header,
+    d-title,
+    d-abstract,
+    d-article,
+    d-appendix,
+    distill-appendix,
+    d-byline,
+    d-footnote-list,
+    d-citation-list,
+    distill-footer {
+      grid-template-columns: [screen-start] 1fr [page-start kicker-start] 60px [middle-start] 60px [text-start kicker-end] 60px 60px 60px 60px 60px 60px 60px 60px [text-end gutter-start] 60px [middle-end] 60px [page-end gutter-end] 1fr [screen-end];
+      grid-column-gap: 32px;
+    }
+  
+    .grid {
+      grid-column-gap: 32px;
+    }
+  }
+  
+  
+  /* Get the citation styles for the appendix (not auto-injected on render since
+     we do our own rendering of the citation appendix) */
+  
+  d-appendix .citation-appendix,
+  .d-appendix .citation-appendix {
+    font-size: 11px;
+    line-height: 15px;
+    border-left: 1px solid rgba(0, 0, 0, 0.1);
+    padding-left: 18px;
+    border: 1px solid rgba(0,0,0,0.1);
+    background: rgba(0, 0, 0, 0.02);
+    padding: 10px 18px;
+    border-radius: 3px;
+    color: rgba(150, 150, 150, 1);
+    overflow: hidden;
+    margin-top: -12px;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+  }
+  
+  
+  /* Social footer */
+  
+  .social_footer {
+    margin-top: 30px;
+    margin-bottom: 0;
+    color: rgba(0,0,0,0.67);
+  }
+  
+  .disqus-comments {
+    margin-right: 30px;
+  }
+  
+  .disqus-comment-count {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+    cursor: pointer;
+  }
+  
+  #disqus_thread {
+    margin-top: 30px;
+  }
+  
+  .article-sharing a {
+    border-bottom: none;
+    margin-right: 8px;
+  }
+  
+  .article-sharing a:hover {
+    border-bottom: none;
+  }
+  
+  .sidebar-section.subscribe {
+    font-size: 12px;
+    line-height: 1.6em;
+  }
+  
+  .subscribe p {
+    margin-bottom: 0.5em;
+  }
+  
+  
+  .article-footer .subscribe {
+    font-size: 15px;
+    margin-top: 45px;
+  }
+  
+  
+  /* Improve display for browsers without grid (IE/Edge <= 15) */
+  
+  .downlevel {
+    line-height: 1.6em;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Arial, sans-serif;
+    margin: 0;
+  }
+  
+  .downlevel .d-title {
+    padding-top: 6rem;
+    padding-bottom: 1.5rem;
+  }
+  
+  .downlevel .d-title h1 {
+    font-size: 50px;
+    font-weight: 700;
+    line-height: 1.1em;
+    margin: 0 0 0.5rem;
+  }
+  
+  .downlevel .d-title p {
+    font-weight: 300;
+    font-size: 1.2rem;
+    line-height: 1.55em;
+    margin-top: 0;
+  }
+  
+  .downlevel .d-byline {
+    padding-top: 0.8em;
+    padding-bottom: 0.8em;
+    font-size: 0.8rem;
+    line-height: 1.8em;
+  }
+  
+  .downlevel .section-separator {
+    border: none;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+  }
+  
+  .downlevel .d-article {
+    font-size: 1.06rem;
+    line-height: 1.7em;
+    padding-top: 1rem;
+    padding-bottom: 2rem;
+  }
+  
+  
+  .downlevel .d-appendix {
+    padding-left: 0;
+    padding-right: 0;
+    max-width: none;
+    font-size: 0.8em;
+    line-height: 1.7em;
+    margin-bottom: 0;
+    color: rgba(0,0,0,0.5);
+    padding-top: 40px;
+    padding-bottom: 48px;
+  }
+  
+  .downlevel .footnotes ol {
+    padding-left: 13px;
+  }
+  
+  .downlevel .base-grid,
+  .downlevel .distill-header,
+  .downlevel .d-title,
+  .downlevel .d-abstract,
+  .downlevel .d-article,
+  .downlevel .d-appendix,
+  .downlevel .distill-appendix,
+  .downlevel .d-byline,
+  .downlevel .d-footnote-list,
+  .downlevel .d-citation-list,
+  .downlevel .distill-footer,
+  .downlevel .appendix-bottom,
+  .downlevel .posts-container {
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+  
+  @media(min-width: 768px) {
+    .downlevel .base-grid,
+    .downlevel .distill-header,
+    .downlevel .d-title,
+    .downlevel .d-abstract,
+    .downlevel .d-article,
+    .downlevel .d-appendix,
+    .downlevel .distill-appendix,
+    .downlevel .d-byline,
+    .downlevel .d-footnote-list,
+    .downlevel .d-citation-list,
+    .downlevel .distill-footer,
+    .downlevel .appendix-bottom,
+    .downlevel .posts-container {
+    padding-left: 150px;
+    padding-right: 150px;
+    max-width: 900px;
+  }
+  }
+  
+  .downlevel pre code {
+    display: block;
+    border-left: 2px solid rgba(0, 0, 0, .1);
+    padding: 0 0 0 20px;
+    font-size: 14px;
+  }
+  
+  .downlevel code, .downlevel pre {
+    color: black;
+    background: none;
+    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+    text-align: left;
+    white-space: pre;
+    word-spacing: normal;
+    word-break: normal;
+    word-wrap: normal;
+    line-height: 1.5;
+  
+    -moz-tab-size: 4;
+    -o-tab-size: 4;
+    tab-size: 4;
+  
+    -webkit-hyphens: none;
+    -moz-hyphens: none;
+    -ms-hyphens: none;
+    hyphens: none;
+  }
+  
+  </style>
+  
+  <script type="application/javascript">
+  
+  function is_downlevel_browser() {
+    if (bowser.isUnsupportedBrowser({ msie: "12", msedge: "16"},
+                                   window.navigator.userAgent)) {
+      return true;
+    } else {
+      return window.load_distill_framework === undefined;
+    }
+  }
+  
+  // show body when load is complete
+  function on_load_complete() {
+  
+    // set body to visible
+    document.body.style.visibility = 'visible';
+  
+    // force redraw for leaflet widgets
+    if (window.HTMLWidgets) {
+      var maps = window.HTMLWidgets.findAll(".leaflet");
+      $.each(maps, function(i, el) {
+        var map = this.getMap();
+        map.invalidateSize();
+        map.eachLayer(function(layer) {
+          if (layer instanceof L.TileLayer)
+            layer.redraw();
+        });
+      });
+    }
+  
+    // trigger 'shown' so htmlwidgets resize
+    $('d-article').trigger('shown');
+  }
+  
+  function init_distill() {
+  
+    init_common();
+  
+    // create front matter
+    var front_matter = $('<d-front-matter></d-front-matter>');
+    $('#distill-front-matter').wrap(front_matter);
+  
+    // create d-title
+    $('.d-title').changeElementType('d-title');
+  
+    // create d-byline
+    var byline = $('<d-byline></d-byline>');
+    $('.d-byline').replaceWith(byline);
+  
+    // create d-article
+    var article = $('<d-article></d-article>');
+    $('.d-article').wrap(article).children().unwrap();
+  
+    // move posts container into article
+    $('.posts-container').appendTo($('d-article'));
+  
+    // create d-appendix
+    $('.d-appendix').changeElementType('d-appendix');
+  
+    // create d-bibliography
+    var bibliography = $('<d-bibliography></d-bibliography>');
+    $('#distill-bibliography').wrap(bibliography);
+  
+    // flag indicating that we have appendix items
+    var appendix = $('.appendix-bottom').children('h3').length > 0;
+  
+    // replace citations with <d-cite>
+    $('.citation').each(function(i, val) {
+      appendix = true;
+      var cites = $(this).attr('data-cites').split(" ");
+      var dt_cite = $('<d-cite></d-cite>');
+      dt_cite.attr('key', cites.join());
+      $(this).replaceWith(dt_cite);
+    });
+    // remove refs
+    $('#refs').remove();
+  
+    // replace footnotes with <d-footnote>
+    $('.footnote-ref').each(function(i, val) {
+      appendix = true;
+      var href = $(this).attr('href');
+      var id = href.replace('#', '');
+      var fn = $('#' + id);
+      var fn_p = $('#' + id + '>p');
+      fn_p.find('.footnote-back').remove();
+      var text = fn_p.html();
+      var dtfn = $('<d-footnote></d-footnote>');
+      dtfn.html(text);
+      $(this).replaceWith(dtfn);
+    });
+    // remove footnotes
+    $('.footnotes').remove();
+  
+    $('h1.appendix, h2.appendix').each(function(i, val) {
+      $(this).changeElementType('h3');
+    });
+    $('h3.appendix').each(function(i, val) {
+      var id = $(this).attr('id');
+      $('.d-toc a[href="#' + id + '"]').parent().remove();
+      appendix = true;
+      $(this).nextUntil($('h1, h2, h3')).addBack().appendTo($('d-appendix'));
+    });
+  
+    // show d-appendix if we have appendix content
+    $("d-appendix").css('display', appendix ? 'grid' : 'none');
+  
+    // replace code blocks with d-code
+    $('pre>code').each(function(i, val) {
+      var code = $(this);
+      var pre = code.parent();
+      var clz = "";
+      var language = pre.attr('class');
+      if (language) {
+        // map unknown languages to "clike" (without this they just dissapear)
+        if ($.inArray(language, ["bash", "clike", "css", "go", "html",
+                                 "javascript", "js", "julia", "lua", "markdown",
+                                 "markup", "mathml", "python", "svg", "xml"]) == -1)
+          language = "clike";
+        language = ' language="' + language + '"';
+        var dt_code = $('<d-code block' + language + clz + '></d-code>');
+        dt_code.text(code.text());
+        pre.replaceWith(dt_code);
+      } else {
+        code.addClass('text-output').unwrap().changeElementType('pre');
+      }
+    });
+  
+    // localize layout chunks to just output
+    $('.layout-chunk').each(function(i, val) {
+  
+      // capture layout
+      var layout = $(this).attr('data-layout');
+  
+      // apply layout to markdown level block elements
+      var elements = $(this).children().not('d-code, pre.text-output, script');
+      elements.each(function(i, el) {
+        var layout_div = $('<div class="' + layout + '"></div>');
+        if (layout_div.hasClass('shaded')) {
+          var shaded_content = $('<div class="shaded-content"></div>');
+          $(this).wrap(shaded_content);
+          $(this).parent().wrap(layout_div);
+        } else {
+          $(this).wrap(layout_div);
+        }
+      });
+  
+  
+      // unwrap the layout-chunk div
+      $(this).children().unwrap();
+    });
+  
+    // load distill framework
+    load_distill_framework();
+  
+    // wait for window.distillRunlevel == 4 to do post processing
+    function distill_post_process() {
+  
+      if (!window.distillRunlevel || window.distillRunlevel < 4)
+        return;
+  
+      // hide author/affiliations entirely if we have no authors
+      var front_matter = JSON.parse($("#distill-front-matter").html());
+      var have_authors = front_matter.authors && front_matter.authors.length > 0;
+      if (!have_authors)
+        $('d-byline').addClass('hidden');
+  
+      // table of contents
+      if (have_authors) // adjust border if we are in authors
+        $('.d-toc').parent().addClass('d-article-with-toc');
+  
+      // strip links that point to #
+      $('.authors-affiliations').find('a[href="#"]').removeAttr('href');
+  
+      // hide elements of author/affiliations grid that have no value
+      function hide_byline_column(caption) {
+        $('d-byline').find('h3:contains("' + caption + '")').parent().css('visibility', 'hidden');
+      }
+  
+      // affiliations
+      var have_affiliations = false;
+      for (var i = 0; i<front_matter.authors.length; ++i) {
+        var author = front_matter.authors[i];
+        if (author.affiliation !== "&nbsp;") {
+          have_affiliations = true;
+          break;
+        }
+      }
+      if (!have_affiliations)
+        $('d-byline').find('h3:contains("Affiliations")').css('visibility', 'hidden');
+  
+      // published date
+      if (!front_matter.publishedDate)
+        hide_byline_column("Published");
+  
+      // document object identifier
+      var doi = $('d-byline').find('h3:contains("DOI")');
+      var doi_p = doi.next().empty();
+      if (!front_matter.doi) {
+        // if we have a citation and valid citationText then link to that
+        if ($('#citation').length > 0 && front_matter.citationText) {
+          doi.html('Citation');
+          $('<a href="#citation"></a>')
+            .text(front_matter.citationText)
+            .appendTo(doi_p);
+        } else {
+          hide_byline_column("DOI");
+        }
+      } else {
+        $('<a></a>')
+           .attr('href', "https://doi.org/" + front_matter.doi)
+           .html(front_matter.doi)
+           .appendTo(doi_p);
+      }
+  
+       // change plural form of authors/affiliations
+      if (front_matter.authors.length === 1) {
+        var grid = $('.authors-affiliations');
+        grid.children('h3:contains("Authors")').text('Author');
+        grid.children('h3:contains("Affiliations")').text('Affiliation');
+      }
+  
+      // inject pre code styles (can't do this with a global stylesheet b/c a shadow root is used)
+      $('d-code').each(function(i, val) {
+        var style = document.createElement('style');
+        style.innerHTML = 'pre code { padding-left: 10px; font-size: 12px; border-left: 2px solid rgba(0,0,0,0.1); } ' +
+                          '@media(min-width: 768px) { pre code { padding-left: 18px; font-size: 14px; } }';
+        if (this.shadowRoot)
+          this.shadowRoot.appendChild(style);
+      });
+  
+      // move appendix-bottom entries to the bottom
+      $('.appendix-bottom').appendTo('d-appendix').children().unwrap();
+      $('.appendix-bottom').remove();
+  
+      // clear polling timer
+      clearInterval(tid);
+  
+      // show body now that everything is ready
+      on_load_complete();
+    }
+  
+    var tid = setInterval(distill_post_process, 50);
+    distill_post_process();
+  
+  }
+  
+  function init_downlevel() {
+  
+    init_common();
+  
+     // insert hr after d-title
+    $('.d-title').after($('<hr class="section-separator"/>'));
+  
+    // check if we have authors
+    var front_matter = JSON.parse($("#distill-front-matter").html());
+    var have_authors = front_matter.authors && front_matter.authors.length > 0;
+  
+    // manage byline/border
+    if (!have_authors)
+      $('.d-byline').remove();
+    $('.d-byline').after($('<hr class="section-separator"/>'));
+    $('.d-byline a').remove();
+  
+    // remove toc
+    $('.d-toc-header').remove();
+    $('.d-toc').remove();
+    $('.d-toc-separator').remove();
+  
+    // move appendix elements
+    $('h1.appendix, h2.appendix').each(function(i, val) {
+      $(this).changeElementType('h3');
+    });
+    $('h3.appendix').each(function(i, val) {
+      $(this).nextUntil($('h1, h2, h3')).addBack().appendTo($('.d-appendix'));
+    });
+  
+  
+    // inject headers into references and footnotes
+    var refs_header = $('<h3></h3>');
+    refs_header.text('References');
+    $('#refs').prepend(refs_header);
+  
+    var footnotes_header = $('<h3></h3');
+    footnotes_header.text('Footnotes');
+    $('.footnotes').children('hr').first().replaceWith(footnotes_header);
+  
+    // move appendix-bottom entries to the bottom
+    $('.appendix-bottom').appendTo('.d-appendix').children().unwrap();
+    $('.appendix-bottom').remove();
+  
+    // remove appendix if it's empty
+    if ($('.d-appendix').children().length === 0)
+      $('.d-appendix').remove();
+  
+    // prepend separator above appendix
+    $('.d-appendix').before($('<hr class="section-separator" style="clear: both"/>'));
+  
+    // trim code
+    $('pre>code').each(function(i, val) {
+      $(this).html($.trim($(this).html()));
+    });
+  
+    // move posts-container right before article
+    $('.posts-container').insertBefore($('.d-article'));
+  
+    $('body').addClass('downlevel');
+  
+    on_load_complete();
+  }
+  
+  
+  function init_common() {
+  
+    // jquery plugin to change element types
+    (function($) {
+      $.fn.changeElementType = function(newType) {
+        var attrs = {};
+  
+        $.each(this[0].attributes, function(idx, attr) {
+          attrs[attr.nodeName] = attr.nodeValue;
+        });
+  
+        this.replaceWith(function() {
+          return $("<" + newType + "/>", attrs).append($(this).contents());
+        });
+      };
+    })(jQuery);
+  
+    // prevent underline for linked images
+    $('a > img').parent().css({'border-bottom' : 'none'});
+  
+    // mark non-body figures created by knitr chunks as 100% width
+    $('.layout-chunk').each(function(i, val) {
+      var figures = $(this).find('img, .html-widget');
+      if ($(this).attr('data-layout') !== "l-body") {
+        figures.css('width', '100%');
+      } else {
+        figures.css('max-width', '100%');
+        figures.filter("[width]").each(function(i, val) {
+          var fig = $(this);
+          fig.css('width', fig.attr('width') + 'px');
+        });
+  
+      }
+    });
+  
+    // auto-append index.html to post-preview links in file: protocol
+    // and in rstudio ide preview
+    $('.post-preview').each(function(i, val) {
+      if (window.location.protocol === "file:")
+        $(this).attr('href', $(this).attr('href') + "index.html");
+    });
+  
+    // get rid of index.html references in header
+    if (window.location.protocol !== "file:") {
+      $('.distill-site-header a[href]').each(function(i,val) {
+        $(this).attr('href', $(this).attr('href').replace("index.html", "./"));
+      });
+    }
+  
+    // add class to pandoc style tables
+    $('tr.header').parent('thead').parent('table').addClass('pandoc-table');
+    $('.kable-table').children('table').addClass('pandoc-table');
+  
+    // add figcaption style to table captions
+    $('caption').parent('table').addClass("figcaption");
+  
+    // initialize posts list
+    if (window.init_posts_list)
+      window.init_posts_list();
+  
+    // implmement disqus comment link
+    $('.disqus-comment-count').click(function() {
+      window.headroom_prevent_pin = true;
+      $('#disqus_thread').toggleClass('hidden');
+      if (!$('#disqus_thread').hasClass('hidden')) {
+        var offset = $(this).offset();
+        $(window).resize();
+        $('html, body').animate({
+          scrollTop: offset.top - 35
+        });
+      }
+    });
+  }
+  
+  document.addEventListener('DOMContentLoaded', function() {
+    if (is_downlevel_browser())
+      init_downlevel();
+    else
+      window.addEventListener('WebComponentsReady', init_distill);
+  });
+  
+  </script>
+  
+  <!--/radix_placeholder_distill-->
+  <script src="overview-of-variables_files/core-js-2.5.3/shim.min.js"></script>
+  <script src="overview-of-variables_files/react-16.12.0/react.min.js"></script>
+  <script src="overview-of-variables_files/react-16.12.0/react-dom.min.js"></script>
+  <script src="overview-of-variables_files/reactwidget-1.0.0/react-tools.js"></script>
+  <script src="overview-of-variables_files/htmlwidgets-1.5.1/htmlwidgets.js"></script>
+  <script src="overview-of-variables_files/reactable-binding-0.1.0.1/reactable.js"></script>
+  <script src="overview-of-variables_files/jquery-1.11.3/jquery.min.js"></script>
+  <script src="overview-of-variables_files/bowser-1.9.3/bowser.min.js"></script>
+  <script src="overview-of-variables_files/webcomponents-2.0.0/webcomponents.js"></script>
+  <script src="overview-of-variables_files/distill-2.2.21/template.v2.js"></script>
+  <!--radix_placeholder_site_in_header-->
+  <!--/radix_placeholder_site_in_header-->
+
+
+</head>
+
+<body>
+
+<!--radix_placeholder_front_matter-->
+
+<script id="distill-front-matter" type="text/json">
+{"title":"Overview of variables","description":"The goal is to generate a table that allows the reader to search for variables by their acronym, get an exlpanation what a variable measures as well as mean and standard deviation. I want to produce a table with more information on each variable so that you can just easily look up a variable. Such a table would be for everyone interested in the data set.","authors":[{"author":"Sophie Pychlau","authorURL":"https://github.com/spychlau","affiliation":"&nbsp;","affiliationURL":"#"}],"publishedDate":"2020-03-16T00:00:00.000-07:00","citationText":"Pychlau, 2020"}
+</script>
+
+<!--/radix_placeholder_front_matter-->
+<!--radix_placeholder_navigation_before_body-->
+<!--/radix_placeholder_navigation_before_body-->
+<!--radix_placeholder_site_before_body-->
+<!--/radix_placeholder_site_before_body-->
+
+<div class="d-title">
+<h1>Overview of variables</h1>
+<p><p>The goal is to generate a table that allows the reader to search for variables by their acronym, get an exlpanation what a variable measures as well as mean and standard deviation. I want to produce a table with more information on each variable so that you can just easily look up a variable. Such a table would be for everyone interested in the data set.</p></p>
+</div>
+
+<div class="d-byline">
+  Sophie Pychlau <a href="https://github.com/spychlau" class="uri">https://github.com/spychlau</a> 
+  
+<br/>03-16-2020
+</div>
+
+<div class="d-article">
+<p>Using the gt package seems a natural first step:</p>
+<div class="layout-chunk" data-layout="l-body-outset">
+<pre class="r"><code>
+variable_names %&gt;% 
+  gt()</code></pre>
+<style>html {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
+}
+
+#vzrylkipos .gt_table {
+  display: table;
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+}
+
+#vzrylkipos .gt_heading {
+  background-color: #FFFFFF;
+  border-bottom-color: #FFFFFF;
+  border-left-style: hidden;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: hidden;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#vzrylkipos .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#vzrylkipos .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 0;
+  padding-bottom: 4px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#vzrylkipos .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#vzrylkipos .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#vzrylkipos .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#vzrylkipos .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#vzrylkipos .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#vzrylkipos .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#vzrylkipos .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#vzrylkipos .gt_group_heading {
+  padding: 8px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#vzrylkipos .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#vzrylkipos .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#vzrylkipos .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#vzrylkipos .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#vzrylkipos .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#vzrylkipos .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 12px;
+}
+
+#vzrylkipos .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#vzrylkipos .gt_first_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+}
+
+#vzrylkipos .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#vzrylkipos .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#vzrylkipos .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#vzrylkipos .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#vzrylkipos .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding: 4px;
+}
+
+#vzrylkipos .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#vzrylkipos .gt_sourcenote {
+  font-size: 90%;
+  padding: 4px;
+}
+
+#vzrylkipos .gt_left {
+  text-align: left;
+}
+
+#vzrylkipos .gt_center {
+  text-align: center;
+}
+
+#vzrylkipos .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#vzrylkipos .gt_font_normal {
+  font-weight: normal;
+}
+
+#vzrylkipos .gt_font_bold {
+  font-weight: bold;
+}
+
+#vzrylkipos .gt_font_italic {
+  font-style: italic;
+}
+
+#vzrylkipos .gt_super {
+  font-size: 65%;
+}
+
+#vzrylkipos .gt_footnote_marks {
+  font-style: italic;
+  font-size: 65%;
+}
+</style>
+<div id="vzrylkipos" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;"><table class="gt_table">
+  
+  <thead class="gt_col_headings">
+    <tr>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1">Acronym</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1">Function</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1">Variable name</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1">Explanation</th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr>
+      <td class="gt_row gt_left">prhvos</td>
+      <td class="gt_row gt_center">Predictor</td>
+      <td class="gt_row gt_left">Prohibitive voice</td>
+      <td class="gt_row gt_left">How much does the focal employee engage in prohibitive voice, i.e. bringing attention to problems to improve workplace practices?</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left gt_striped">prmvos</td>
+      <td class="gt_row gt_center gt_striped">Predictor</td>
+      <td class="gt_row gt_left gt_striped">Promotive voice</td>
+      <td class="gt_row gt_left gt_striped">How much does the focal employee engage in promotive voice, i.e. making suggestions to improve workplace practices?</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">morobs</td>
+      <td class="gt_row gt_center">Predictor</td>
+      <td class="gt_row gt_left">Moral objection</td>
+      <td class="gt_row gt_left">How much does the focal employee engage in moral objections, i.e.  bringing attention to others' moral worngdoing to improve workplace practices?</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left gt_striped">guilt</td>
+      <td class="gt_row gt_center gt_striped">Mediator</td>
+      <td class="gt_row gt_left gt_striped">Guilt</td>
+      <td class="gt_row gt_left gt_striped">Do supervisors feel guilty when they think of the focal employee's voice behavior?</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">pride</td>
+      <td class="gt_row gt_center">Mediator</td>
+      <td class="gt_row gt_left">Pride</td>
+      <td class="gt_row gt_left">Do supervisors feel proud when they think of the focal employee's voice behavior?</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left gt_striped">emorep</td>
+      <td class="gt_row gt_center gt_striped">Mediator</td>
+      <td class="gt_row gt_left gt_striped">Emotional response</td>
+      <td class="gt_row gt_left gt_striped">What is supervisors' emotional response when focal employees speaks up? (E.g. angry, sad, frustrated)</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">vofrequ</td>
+      <td class="gt_row gt_center">Moderator</td>
+      <td class="gt_row gt_left">Voice frequency</td>
+      <td class="gt_row gt_left">How often does the employee speak up?</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left gt_striped">prhvoss</td>
+      <td class="gt_row gt_center gt_striped">Moderator</td>
+      <td class="gt_row gt_left gt_striped">Prohibitive voice supervisor</td>
+      <td class="gt_row gt_left gt_striped">How much do supervisors engage in prohibitive voice themselves?</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">obse</td>
+      <td class="gt_row gt_center">Moderator</td>
+      <td class="gt_row gt_left">Organization-based self-esteem</td>
+      <td class="gt_row gt_left">Supervisors' organization-based self-esteem</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left gt_striped">morobss</td>
+      <td class="gt_row gt_center gt_striped">Moderator</td>
+      <td class="gt_row gt_left gt_striped">Moral objection supervisor</td>
+      <td class="gt_row gt_left gt_striped">How much do supervisors engage in moral objections themselves?</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">feeltr</td>
+      <td class="gt_row gt_center">Outcome</td>
+      <td class="gt_row gt_left">Feeling trusted</td>
+      <td class="gt_row gt_left">How much do supervisors feel trusted by the focal employee?</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left gt_striped">SER</td>
+      <td class="gt_row gt_center gt_striped">Outcome</td>
+      <td class="gt_row gt_left gt_striped">Social exchange relationship</td>
+      <td class="gt_row gt_left gt_striped">How do supervisors rate the relationship between them and the focal employee, specifically regarding norms of reciprocity?</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">selfas</td>
+      <td class="gt_row gt_center">Moderator</td>
+      <td class="gt_row gt_left">Self-assurance</td>
+      <td class="gt_row gt_left">How assured are supervisors of themselves in their role?</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left gt_striped">VoicSat</td>
+      <td class="gt_row gt_center gt_striped">Moderator</td>
+      <td class="gt_row gt_left gt_striped">Voice satisfaction</td>
+      <td class="gt_row gt_left gt_striped">Are supervisors overall satisfied with  focal employees' voice behavior?</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">frame</td>
+      <td class="gt_row gt_center">Moderator</td>
+      <td class="gt_row gt_left">Framing</td>
+      <td class="gt_row gt_left">How positive/negative does the focal employee frame issues when speaking up, in general?</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left gt_striped">comval</td>
+      <td class="gt_row gt_center gt_striped">Moderator</td>
+      <td class="gt_row gt_left gt_striped">Communal values</td>
+      <td class="gt_row gt_left gt_striped">How much do supervisors embrace communal values?</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">authov</td>
+      <td class="gt_row gt_center">Moderator</td>
+      <td class="gt_row gt_left">Authoritarian values</td>
+      <td class="gt_row gt_left">How much do supervisors embrace authoritarian values?</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left gt_striped">corese</td>
+      <td class="gt_row gt_center gt_striped">Moderator</td>
+      <td class="gt_row gt_left gt_striped">Core self-esteem</td>
+      <td class="gt_row gt_left gt_striped">How much self-esteem do supervisors have?</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">ueprorg</td>
+      <td class="gt_row gt_center">Moderator</td>
+      <td class="gt_row gt_left">Unethical pro-organizational behavior</td>
+      <td class="gt_row gt_left">How sure are supervisors that the focal employee would engage in unethical actions to benefit them, i.e. their supervisors?</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left gt_striped">shame</td>
+      <td class="gt_row gt_center gt_striped">Mediator</td>
+      <td class="gt_row gt_left gt_striped">Shame</td>
+      <td class="gt_row gt_left gt_striped">Do supervisors feel ashamed when they think of the focal employee's voice behavior?</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">constr</td>
+      <td class="gt_row gt_center">Moderator</td>
+      <td class="gt_row gt_left">Construal level</td>
+      <td class="gt_row gt_left">Do supervisors conceive of workplace issues in terms of details (low construal level) or abstract concepts (high construal level)?</td>
+    </tr>
+  </tbody>
+  
+  
+</table></div>
+</div>
+<p>This is a nice and easy overview of the variables I used, quickly generated based on an excel file that contained all this information. However, R offers me the opportunity to add more information to this table. I can easily compute some simple statistics and join them to the file.</p>
+<aside>
+Keep in mind that all variables (except vofrequ, a categorical variable with 7 levels) were measured on a Likert scale from 1 (“strongly disagree”) to 5 (“strongly agree”).
+</aside>
+<div class="layout-chunk" data-layout="l-body-outset">
+<pre class="r"><code>
+descriptives &lt;- data %&gt;% 
+  psych::describe() %&gt;% 
+  mutate(Acronym = as.factor(vars))
+
+#The new file with the descriptives does not contain the acronyms. Before merging, I therefore need to add that column:
+levels(descriptives$Acronym) &lt;-  c(&quot;prhvos&quot;, &quot;prmvos&quot;, &quot;morobs&quot;, &quot;guilt&quot;, &quot;pride&quot;, &quot;emorep&quot;, &quot;vofrequ&quot;, &quot;prhvoss&quot;, &quot;obse&quot;, 
+                                   &quot;morobss&quot;, &quot;feeltr&quot;, &quot;SER&quot;, &quot;selfas&quot;, &quot;VoicSat&quot;, &quot;frame&quot;, &quot;comval&quot;, &quot;authov&quot;, &quot;corese&quot;, 
+                                   &quot;ueprorg&quot;, &quot;shame&quot;, &quot;constr&quot;)
+
+variables &lt;- variable_names %&gt;% 
+  left_join(descriptives, by = &quot;Acronym&quot;) %&gt;% 
+  mutate(Mean = round(mean, 2)) %&gt;% 
+  mutate(SD = round(sd, 2))
+
+#I reorder the columns in the order I want them displayed
+variables &lt;- variables[, c(1, 3, 2, 18, 19, 4)]
+
+variables %&gt;% 
+  gt()</code></pre>
+<style>html {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
+}
+
+#ganmzymuuy .gt_table {
+  display: table;
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+}
+
+#ganmzymuuy .gt_heading {
+  background-color: #FFFFFF;
+  border-bottom-color: #FFFFFF;
+  border-left-style: hidden;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: hidden;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#ganmzymuuy .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#ganmzymuuy .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 0;
+  padding-bottom: 4px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#ganmzymuuy .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#ganmzymuuy .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#ganmzymuuy .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#ganmzymuuy .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#ganmzymuuy .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#ganmzymuuy .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#ganmzymuuy .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#ganmzymuuy .gt_group_heading {
+  padding: 8px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#ganmzymuuy .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#ganmzymuuy .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#ganmzymuuy .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#ganmzymuuy .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#ganmzymuuy .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#ganmzymuuy .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 12px;
+}
+
+#ganmzymuuy .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#ganmzymuuy .gt_first_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+}
+
+#ganmzymuuy .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#ganmzymuuy .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#ganmzymuuy .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#ganmzymuuy .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#ganmzymuuy .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding: 4px;
+}
+
+#ganmzymuuy .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#ganmzymuuy .gt_sourcenote {
+  font-size: 90%;
+  padding: 4px;
+}
+
+#ganmzymuuy .gt_left {
+  text-align: left;
+}
+
+#ganmzymuuy .gt_center {
+  text-align: center;
+}
+
+#ganmzymuuy .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#ganmzymuuy .gt_font_normal {
+  font-weight: normal;
+}
+
+#ganmzymuuy .gt_font_bold {
+  font-weight: bold;
+}
+
+#ganmzymuuy .gt_font_italic {
+  font-style: italic;
+}
+
+#ganmzymuuy .gt_super {
+  font-size: 65%;
+}
+
+#ganmzymuuy .gt_footnote_marks {
+  font-style: italic;
+  font-size: 65%;
+}
+</style>
+<div id="ganmzymuuy" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;"><table class="gt_table">
+  
+  <thead class="gt_col_headings">
+    <tr>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1">Acronym</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1">Variable name</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1">Function</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">Mean</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">SD</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1">Explanation</th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr>
+      <td class="gt_row gt_left">prhvos</td>
+      <td class="gt_row gt_left">Prohibitive voice</td>
+      <td class="gt_row gt_center">Predictor</td>
+      <td class="gt_row gt_right">3.82</td>
+      <td class="gt_row gt_right">0.71</td>
+      <td class="gt_row gt_left">How much does the focal employee engage in prohibitive voice, i.e. bringing attention to problems to improve workplace practices?</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left gt_striped">prmvos</td>
+      <td class="gt_row gt_left gt_striped">Promotive voice</td>
+      <td class="gt_row gt_center gt_striped">Predictor</td>
+      <td class="gt_row gt_right gt_striped">3.85</td>
+      <td class="gt_row gt_right gt_striped">0.76</td>
+      <td class="gt_row gt_left gt_striped">How much does the focal employee engage in promotive voice, i.e. making suggestions to improve workplace practices?</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">morobs</td>
+      <td class="gt_row gt_left">Moral objection</td>
+      <td class="gt_row gt_center">Predictor</td>
+      <td class="gt_row gt_right">3.82</td>
+      <td class="gt_row gt_right">0.84</td>
+      <td class="gt_row gt_left">How much does the focal employee engage in moral objections, i.e.  bringing attention to others' moral worngdoing to improve workplace practices?</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left gt_striped">guilt</td>
+      <td class="gt_row gt_left gt_striped">Guilt</td>
+      <td class="gt_row gt_center gt_striped">Mediator</td>
+      <td class="gt_row gt_right gt_striped">1.56</td>
+      <td class="gt_row gt_right gt_striped">0.64</td>
+      <td class="gt_row gt_left gt_striped">Do supervisors feel guilty when they think of the focal employee's voice behavior?</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">pride</td>
+      <td class="gt_row gt_left">Pride</td>
+      <td class="gt_row gt_center">Mediator</td>
+      <td class="gt_row gt_right">3.80</td>
+      <td class="gt_row gt_right">0.61</td>
+      <td class="gt_row gt_left">Do supervisors feel proud when they think of the focal employee's voice behavior?</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left gt_striped">emorep</td>
+      <td class="gt_row gt_left gt_striped">Emotional response</td>
+      <td class="gt_row gt_center gt_striped">Mediator</td>
+      <td class="gt_row gt_right gt_striped">1.79</td>
+      <td class="gt_row gt_right gt_striped">0.83</td>
+      <td class="gt_row gt_left gt_striped">What is supervisors' emotional response when focal employees speaks up? (E.g. angry, sad, frustrated)</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">vofrequ</td>
+      <td class="gt_row gt_left">Voice frequency</td>
+      <td class="gt_row gt_center">Moderator</td>
+      <td class="gt_row gt_right">4.16</td>
+      <td class="gt_row gt_right">1.30</td>
+      <td class="gt_row gt_left">How often does the employee speak up?</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left gt_striped">prhvoss</td>
+      <td class="gt_row gt_left gt_striped">Prohibitive voice supervisor</td>
+      <td class="gt_row gt_center gt_striped">Moderator</td>
+      <td class="gt_row gt_right gt_striped">4.17</td>
+      <td class="gt_row gt_right gt_striped">0.50</td>
+      <td class="gt_row gt_left gt_striped">How much do supervisors engage in prohibitive voice themselves?</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">obse</td>
+      <td class="gt_row gt_left">Organization-based self-esteem</td>
+      <td class="gt_row gt_center">Moderator</td>
+      <td class="gt_row gt_right">4.21</td>
+      <td class="gt_row gt_right">0.50</td>
+      <td class="gt_row gt_left">Supervisors' organization-based self-esteem</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left gt_striped">morobss</td>
+      <td class="gt_row gt_left gt_striped">Moral objection supervisor</td>
+      <td class="gt_row gt_center gt_striped">Moderator</td>
+      <td class="gt_row gt_right gt_striped">4.03</td>
+      <td class="gt_row gt_right gt_striped">0.65</td>
+      <td class="gt_row gt_left gt_striped">How much do supervisors engage in moral objections themselves?</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">feeltr</td>
+      <td class="gt_row gt_left">Feeling trusted</td>
+      <td class="gt_row gt_center">Outcome</td>
+      <td class="gt_row gt_right">3.98</td>
+      <td class="gt_row gt_right">0.54</td>
+      <td class="gt_row gt_left">How much do supervisors feel trusted by the focal employee?</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left gt_striped">SER</td>
+      <td class="gt_row gt_left gt_striped">Social exchange relationship</td>
+      <td class="gt_row gt_center gt_striped">Outcome</td>
+      <td class="gt_row gt_right gt_striped">3.96</td>
+      <td class="gt_row gt_right gt_striped">0.78</td>
+      <td class="gt_row gt_left gt_striped">How do supervisors rate the relationship between them and the focal employee, specifically regarding norms of reciprocity?</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">selfas</td>
+      <td class="gt_row gt_left">Self-assurance</td>
+      <td class="gt_row gt_center">Moderator</td>
+      <td class="gt_row gt_right">3.17</td>
+      <td class="gt_row gt_right">0.88</td>
+      <td class="gt_row gt_left">How assured are supervisors of themselves in their role?</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left gt_striped">VoicSat</td>
+      <td class="gt_row gt_left gt_striped">Voice satisfaction</td>
+      <td class="gt_row gt_center gt_striped">Moderator</td>
+      <td class="gt_row gt_right gt_striped">3.99</td>
+      <td class="gt_row gt_right gt_striped">0.85</td>
+      <td class="gt_row gt_left gt_striped">Are supervisors overall satisfied with  focal employees' voice behavior?</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">frame</td>
+      <td class="gt_row gt_left">Framing</td>
+      <td class="gt_row gt_center">Moderator</td>
+      <td class="gt_row gt_right">3.93</td>
+      <td class="gt_row gt_right">1.00</td>
+      <td class="gt_row gt_left">How positive/negative does the focal employee frame issues when speaking up, in general?</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left gt_striped">comval</td>
+      <td class="gt_row gt_left gt_striped">Communal values</td>
+      <td class="gt_row gt_center gt_striped">Moderator</td>
+      <td class="gt_row gt_right gt_striped">4.38</td>
+      <td class="gt_row gt_right gt_striped">0.79</td>
+      <td class="gt_row gt_left gt_striped">How much do supervisors embrace communal values?</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">authov</td>
+      <td class="gt_row gt_left">Authoritarian values</td>
+      <td class="gt_row gt_center">Moderator</td>
+      <td class="gt_row gt_right">3.64</td>
+      <td class="gt_row gt_right">1.14</td>
+      <td class="gt_row gt_left">How much do supervisors embrace authoritarian values?</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left gt_striped">corese</td>
+      <td class="gt_row gt_left gt_striped">Core self-esteem</td>
+      <td class="gt_row gt_center gt_striped">Moderator</td>
+      <td class="gt_row gt_right gt_striped">3.55</td>
+      <td class="gt_row gt_right gt_striped">0.87</td>
+      <td class="gt_row gt_left gt_striped">How much self-esteem do supervisors have?</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">ueprorg</td>
+      <td class="gt_row gt_left">Unethical pro-organizational behavior</td>
+      <td class="gt_row gt_center">Moderator</td>
+      <td class="gt_row gt_right">2.30</td>
+      <td class="gt_row gt_right">0.96</td>
+      <td class="gt_row gt_left">How sure are supervisors that the focal employee would engage in unethical actions to benefit them, i.e. their supervisors?</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left gt_striped">shame</td>
+      <td class="gt_row gt_left gt_striped">Shame</td>
+      <td class="gt_row gt_center gt_striped">Mediator</td>
+      <td class="gt_row gt_right gt_striped">1.43</td>
+      <td class="gt_row gt_right gt_striped">0.46</td>
+      <td class="gt_row gt_left gt_striped">Do supervisors feel ashamed when they think of the focal employee's voice behavior?</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">constr</td>
+      <td class="gt_row gt_left">Construal level</td>
+      <td class="gt_row gt_center">Moderator</td>
+      <td class="gt_row gt_right">3.39</td>
+      <td class="gt_row gt_right">0.40</td>
+      <td class="gt_row gt_left">Do supervisors conceive of workplace issues in terms of details (low construal level) or abstract concepts (high construal level)?</td>
+    </tr>
+  </tbody>
+  
+  
+</table></div>
+</div>
+<p>Using gt is a very easy and attractive way of making a table. However, given that the purpose of this blog is to provide readers with a way to search for variables, an interactive table would be superior to gt. Therefore, reactable is good:</p>
+<div class="layout-chunk" data-layout="l-page">
+<pre class="r"><code>
+reactable(variables,
+          resizable = TRUE,
+          striped = TRUE,
+          highlight = TRUE,
+          searchable = TRUE)</code></pre>
+<div id="htmlwidget-d5df467c7c55ed31eb40" class="reactable html-widget" style="width:auto;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-d5df467c7c55ed31eb40">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"Acronym":["prhvos","prmvos","morobs","guilt","pride","emorep","vofrequ","prhvoss","obse","morobss","feeltr","SER","selfas","VoicSat","frame","comval","authov","corese","ueprorg","shame","constr"],"Variable name":["Prohibitive voice","Promotive voice","Moral objection","Guilt","Pride","Emotional response","Voice frequency","Prohibitive voice supervisor","Organization-based self-esteem","Moral objection supervisor","Feeling trusted","Social exchange relationship","Self-assurance","Voice satisfaction","Framing","Communal values","Authoritarian values","Core self-esteem","Unethical pro-organizational behavior","Shame","Construal level"],"Function":["Predictor","Predictor","Predictor","Mediator","Mediator","Mediator","Moderator","Moderator","Moderator","Moderator","Outcome","Outcome","Moderator","Moderator","Moderator","Moderator","Moderator","Moderator","Moderator","Mediator","Moderator"],"Mean":[3.82,3.85,3.82,1.56,3.8,1.79,4.16,4.17,4.21,4.03,3.98,3.96,3.17,3.99,3.93,4.38,3.64,3.55,2.3,1.43,3.39],"SD":[0.71,0.76,0.84,0.64,0.61,0.83,1.3,0.5,0.5,0.65,0.54,0.78,0.88,0.85,1,0.79,1.14,0.87,0.96,0.46,0.4],"Explanation":["How much does the focal employee engage in prohibitive voice, i.e. bringing attention to problems to improve workplace practices?","How much does the focal employee engage in promotive voice, i.e. making suggestions to improve workplace practices?","How much does the focal employee engage in moral objections, i.e.  bringing attention to others' moral worngdoing to improve workplace practices?","Do supervisors feel guilty when they think of the focal employee's voice behavior?","Do supervisors feel proud when they think of the focal employee's voice behavior?","What is supervisors' emotional response when focal employees speaks up? (E.g. angry, sad, frustrated)","How often does the employee speak up?","How much do supervisors engage in prohibitive voice themselves?","Supervisors' organization-based self-esteem","How much do supervisors engage in moral objections themselves?","How much do supervisors feel trusted by the focal employee?","How do supervisors rate the relationship between them and the focal employee, specifically regarding norms of reciprocity?","How assured are supervisors of themselves in their role?","Are supervisors overall satisfied with  focal employees' voice behavior?","How positive/negative does the focal employee frame issues when speaking up, in general?","How much do supervisors embrace communal values?","How much do supervisors embrace authoritarian values?","How much self-esteem do supervisors have?","How sure are supervisors that the focal employee would engage in unethical actions to benefit them, i.e. their supervisors?","Do supervisors feel ashamed when they think of the focal employee's voice behavior?","Do supervisors conceive of workplace issues in terms of details (low construal level) or abstract concepts (high construal level)?"]},"columns":[{"accessor":"Acronym","name":"Acronym","type":"character"},{"accessor":"Variable name","name":"Variable name","type":"character"},{"accessor":"Function","name":"Function","type":"factor"},{"accessor":"Mean","name":"Mean","type":"numeric"},{"accessor":"SD","name":"SD","type":"numeric"},{"accessor":"Explanation","name":"Explanation","type":"character"}],"resizable":true,"searchable":true,"defaultPageSize":10,"paginationType":"numbers","showPageInfo":true,"minRows":1,"highlight":true,"striped":true,"dataKey":"61e2cad67670cb1bd65a01d48768885b"},"children":[]},"class":"reactR_markup"},"evals":[],"jsHooks":[]}</script>
+</div>
+<p>These are the interactive features I want! Now I just want to make the table look nicer. In particulat, I want adjust the column width and order the first column alphabetically by default.</p>
+<aside>
+Specifying the width of the columns was just guess work.
+</aside>
+<div class="layout-chunk" data-layout="l-page">
+<pre class="r"><code>
+variables %&gt;%
+  reactable(
+    searchable = TRUE,
+    striped = TRUE,
+    highlight = TRUE,
+    pagination = FALSE,
+    defaultSorted = list(Acronym = &quot;asc&quot;),
+   columns = list(Explanation = 
+      colDef(minWidth = 200),
+      Function = 
+      colDef(maxWidth = 100),
+      Mean = 
+      colDef(maxWidth = 70),
+      SD = 
+      colDef(maxWidth = 70),
+      Acronym = 
+      colDef(maxWidth = 90)))</code></pre>
+<div id="htmlwidget-9133be2778a0e27eab0f" class="reactable html-widget" style="width:auto;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-9133be2778a0e27eab0f">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"Acronym":["prhvos","prmvos","morobs","guilt","pride","emorep","vofrequ","prhvoss","obse","morobss","feeltr","SER","selfas","VoicSat","frame","comval","authov","corese","ueprorg","shame","constr"],"Variable name":["Prohibitive voice","Promotive voice","Moral objection","Guilt","Pride","Emotional response","Voice frequency","Prohibitive voice supervisor","Organization-based self-esteem","Moral objection supervisor","Feeling trusted","Social exchange relationship","Self-assurance","Voice satisfaction","Framing","Communal values","Authoritarian values","Core self-esteem","Unethical pro-organizational behavior","Shame","Construal level"],"Function":["Predictor","Predictor","Predictor","Mediator","Mediator","Mediator","Moderator","Moderator","Moderator","Moderator","Outcome","Outcome","Moderator","Moderator","Moderator","Moderator","Moderator","Moderator","Moderator","Mediator","Moderator"],"Mean":[3.82,3.85,3.82,1.56,3.8,1.79,4.16,4.17,4.21,4.03,3.98,3.96,3.17,3.99,3.93,4.38,3.64,3.55,2.3,1.43,3.39],"SD":[0.71,0.76,0.84,0.64,0.61,0.83,1.3,0.5,0.5,0.65,0.54,0.78,0.88,0.85,1,0.79,1.14,0.87,0.96,0.46,0.4],"Explanation":["How much does the focal employee engage in prohibitive voice, i.e. bringing attention to problems to improve workplace practices?","How much does the focal employee engage in promotive voice, i.e. making suggestions to improve workplace practices?","How much does the focal employee engage in moral objections, i.e.  bringing attention to others' moral worngdoing to improve workplace practices?","Do supervisors feel guilty when they think of the focal employee's voice behavior?","Do supervisors feel proud when they think of the focal employee's voice behavior?","What is supervisors' emotional response when focal employees speaks up? (E.g. angry, sad, frustrated)","How often does the employee speak up?","How much do supervisors engage in prohibitive voice themselves?","Supervisors' organization-based self-esteem","How much do supervisors engage in moral objections themselves?","How much do supervisors feel trusted by the focal employee?","How do supervisors rate the relationship between them and the focal employee, specifically regarding norms of reciprocity?","How assured are supervisors of themselves in their role?","Are supervisors overall satisfied with  focal employees' voice behavior?","How positive/negative does the focal employee frame issues when speaking up, in general?","How much do supervisors embrace communal values?","How much do supervisors embrace authoritarian values?","How much self-esteem do supervisors have?","How sure are supervisors that the focal employee would engage in unethical actions to benefit them, i.e. their supervisors?","Do supervisors feel ashamed when they think of the focal employee's voice behavior?","Do supervisors conceive of workplace issues in terms of details (low construal level) or abstract concepts (high construal level)?"]},"columns":[{"accessor":"Acronym","name":"Acronym","type":"character","maxWidth":90},{"accessor":"Variable name","name":"Variable name","type":"character"},{"accessor":"Function","name":"Function","type":"factor","maxWidth":100},{"accessor":"Mean","name":"Mean","type":"numeric","maxWidth":70},{"accessor":"SD","name":"SD","type":"numeric","maxWidth":70},{"accessor":"Explanation","name":"Explanation","type":"character","minWidth":200}],"searchable":true,"defaultSorted":[{"id":"Acronym","desc":false}],"defaultPageSize":21,"paginationType":"numbers","showPageInfo":true,"minRows":1,"highlight":true,"striped":true,"dataKey":"610d6ffdbb91ee028fa94b21296f8724"},"children":[]},"class":"reactR_markup"},"evals":[],"jsHooks":[]}</script>
+</div>
+<!--radix_placeholder_article_footer-->
+<!--/radix_placeholder_article_footer-->
+</div>
+
+<div class="d-appendix">
+</div>
+
+
+<!--radix_placeholder_site_after_body-->
+<!--/radix_placeholder_site_after_body-->
+<!--radix_placeholder_appendices-->
+<div class="appendix-bottom"></div>
+<!--/radix_placeholder_appendices-->
+<!--radix_placeholder_navigation_after_body-->
+<!--/radix_placeholder_navigation_after_body-->
+
+</body>
+
+</html>
